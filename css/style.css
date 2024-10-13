@@ -2,6 +2,8 @@ body {
     font-family: sans-serif;
     background: url("../images/tela-fundo-login.png");
     background-position: fixed;
+    background-repeat: none;
+    background-size: cover;
     width: 1602px;
     height: 1062px;
     margin: 0px;
@@ -100,3 +102,20 @@ body {
     cursor: pointer;
 }
 
+#tela-carregamento {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#loading-gif {
+    max-width: 100%;
+    height: auto;
+}
