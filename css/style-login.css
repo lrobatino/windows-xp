@@ -1,0 +1,194 @@
+body {
+    background-color: rgb(36, 70, 139);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    user-select: none;
+    font-family: 'Tahoma', sans-serif;
+}
+
+#janela {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+    height: 470px;
+    border-top: 40px solid #014ac8;
+    border-left: 4px solid #014ac8;
+    border-bottom: 4px solid #014ac8;
+    border-right: 4px solid #014ac8;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #EEEEEE;
+    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.4);
+}
+
+#janela #texto-borda {
+    position: absolute;
+    top: -33px;
+    left: 5px;
+    color: #FFFFFF; 
+    font-size: 24px;
+    pointer-events: none;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+#janela #banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    background: radial-gradient(circle, #afc0de, #7591c2);
+    border-bottom: 10px solid transparent;
+    border-image: radial-gradient(circle, #FF8800 0%,rgba(0,0,0,0) 70%) 1;
+    box-sizing: border-box;
+
+    img {
+        width: 245px;
+        height: 144px;
+    }
+}
+
+#janela #campo-entrar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    width: 700px;
+    height: 180px;
+    font-size: 16px;
+
+    input {
+        width: 400px;
+        height: 25px;
+        font-size: 16px;
+        border: 1px solid #7591c2;
+        outline: none;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        border: 4px solid #014ac8;
+    };
+
+    a::first-letter {
+        text-decoration: underline;
+    }
+}
+
+#janela #campo-entrar #nome-senha {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 180px;
+
+    #visualizar-esconder {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 150px;
+        
+        #inpVisualizarEsconder {
+            width: 25px;
+            height: 25px;
+            margin: 0px;
+        }
+    }
+}
+
+#janela #botoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 400px;
+    height: 70px;
+
+    button {
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+        background-color: white;
+        border: 2px solid #4b7ed7;
+        border-radius: 5px;
+    }
+
+    ::first-letter {
+        text-decoration: underline;
+    }
+}
+
+#caixa-erro {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    border-top: 40px solid #014ac8;
+    border-left: 4px solid #014ac8;
+    border-bottom: 4px solid #014ac8;
+    border-right: 4px solid #014ac8;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #EEEEEE;
+    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.4);
+}
+
+#caixa-erro #texto-borda {
+    position: absolute;
+    top: -33px;
+    left: 5px;
+    color: #FFFFFF; 
+    font-size: 24px;
+    pointer-events: none;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+#caixa-erro #conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+
+    button {
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+        background-color: white;
+        border: 2px solid #4b7ed7;
+        border-radius: 5px;
+    }
+}
+
+#caixa-erro #conteudo #icone-erro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 280px;
+        height: 100px;
+        text-align: center;
+    }
+}
