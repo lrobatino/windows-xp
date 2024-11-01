@@ -9,14 +9,34 @@
     <script src="js/script-desktop.js"></script>
 </head>
 <body>
-    <audio id="entrar" src="sounds/Windows XP Startup.mp3"></audio>
     <div id="area-trabalho">
+        <div id="caixa-erro">
+            <span id="texto-borda">Aviso</span>
+            <div id="conteudo">
+                <div id="icone-erro">
+                    <img src="images/icones/Speech.png" id="icone" draggable="false">
+                    <a id="erro">Login realizado com sucesso.<br> Bem-vindo ao Windows XP!</a>
+                    <audio id="aviso" src="sounds/Windows XP Exclamation.mp3" preload="auto"></audio>
+                    <audio id="informativo" src="sounds/Windows XP Balloon.mp3" preload="auto"></audio>
+                    <audio id="entrar" src="sounds/Windows XP Startup.mp3"></audio>
+                </div>
+                <div id="botoes">
+                    <button id="btnAviso" onclick="fecharAvisoInicial()">Ok</button>
+                    <button id="btnFecharAviso" onclick="fecharAviso()" hidden>Não</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="barra-tarefa">
-        <div id="iniciar" tabindex="-1"">
-            <div id="menu-iniciar"></div>
+        <div id="menu" tabindex="-1" onblur="perderFocoMenu()">
+            <div id="sair" onclick="sair()">
+                <img src="images/icones/Logout.png">
+                <a>Sair</a>
+            </div>
+        </div>
+        <div id="iniciar" tabindex="-1" onclick="focarIniciar()">
             <img src="images/windows-xp-icon-sombra.png" draggable="false">
-            <b>iniciar</b>
+            <b>menu</b>
         </div>
         <div id="indicador-sistema">
             <a id="data-hora"></a>

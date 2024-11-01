@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Windows XP Tahoma';
+    src: url('../fonts/windows-xp-tahoma.ttf');
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -11,21 +16,21 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     user-select: none;
-    font-family: 'Tahoma', sans-serif;
+    font-family: 'Tahoma';
 }
 
 #area-trabalho {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
 }
 
 #barra-tarefa {
     position: absolute;
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
@@ -63,22 +68,14 @@ body {
     }
 }
 
-#iniciar:focus {
-    background-color: #19581f !important;
-    box-shadow: inset -4px -4px 4px #61b868, inset 4px 4px 4px #0e3011 !important;
-
-    #menu-iniciar {
-        display: flex;
-    }
-}
-
-#menu-iniciar {
+#menu {
     position: absolute;
-    z-index: -1;
     top: -660px;
     left: 0px;
     display: none;
     flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
     width: 500px;
     height: 500px;
     background-color: #eeeeee;
@@ -88,7 +85,29 @@ body {
     border-right: 4px solid #014ac8;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    box-shadow: 0px 4px 4px 4px rgba(0,0,0,0.4);
+}
+
+#menu #sair {
+    position: absolute;
+    bottom: -55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    gap: 10px;
+    padding-right: 20px;
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
+
+    a {
+        font-size: 20px;
+        color: white;
+    }
 }
 
 #barra-tarefa #indicador-sistema {
@@ -106,4 +125,78 @@ body {
         color: white;
         text-align: center;
     }
+}
+
+#caixa-erro {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    border-top: 40px solid #014ac8;
+    border-left: 4px solid #014ac8;
+    border-bottom: 4px solid #014ac8;
+    border-right: 4px solid #014ac8;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #EEEEEE;
+    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.4);
+}
+
+#caixa-erro #texto-borda {
+    position: absolute;
+    top: -33px;
+    left: 5px;
+    color: #FFFFFF; 
+    font-size: 24px;
+    pointer-events: none;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+#caixa-erro #conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+
+    button {
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+        background-color: white;
+        border: 2px solid #4b7ed7;
+        border-radius: 5px;
+    }
+}
+
+#caixa-erro #conteudo #icone-erro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 280px;
+        height: 100px;
+        text-align: center;
+    }
+}
+
+#caixa-erro #conteudo #botoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
