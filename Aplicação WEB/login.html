@@ -9,31 +9,37 @@
     <script src="js/script-login.js"></script>
 </head>
 <body>
-    <div id="janela">
-        <span id="texto-borda">Entrar no Windows</span>
-        <div id="banner">
-            <img src="images/windows-xp-logo-texto-branco.png" draggable="false">
+    <div id="caixa-login">
+        <div id="barra-titulo-login">
+            <div id="texto-titulo">Entrar no Windows</div>
         </div>
-        <div id="campo-entrar">
-            <div id="nome-senha">
-                <a>Usuário:</a>
-                <input type="text" id="inpUsuario">
-                <a>Senha:</a>
-                <input type="password" id="inpSenha">
-                <div id="visualizar-esconder">
-                    <input type="checkbox" id="inpVisualizarEsconder" onchange="mostrarEsconder()">
-                    <a id="textoCheckbox">Visualizar Senha</a>
-                </div>
+        <div id="conteudo">
+            <div id="banner">
+                <img src="images/windows-xp-logo-texto-branco.png" draggable="false">
             </div>
-            <img src="images/avatares/sem-avatar.png" id="avatar" draggable="false">
-        </div>
-        <div id="botoes">
-            <button id="btnEntrar" onclick="entrar()">Entrar</button>
-            <button id="btnNovoUsuario" onclick="window.location.href='signin.html'">Novo Usuário</button>
+            <div id="campo-entrar">
+                <div id="nome-senha">
+                    <a>Usuário:</a>
+                    <input type="text" id="inpUsuario">
+                    <a>Senha:</a>
+                    <input type="password" id="inpSenha">
+                    <div id="visualizar-esconder">
+                        <input type="checkbox" id="inpVisualizarEsconder" onchange="mostrarEsconder()">
+                        <a id="textoCheckbox">Visualizar Senha</a>
+                    </div>
+                </div>
+                <img src="images/avatares/sem-avatar.png" id="avatar" draggable="false">
+            </div>
+            <div id="botoes">
+                <button id="btnEntrar" onclick="entrar()">Entrar</button>
+                <button id="btnNovoUsuario" onclick="window.location.href='signin.html'">Novo Usuário</button>
+            </div>
         </div>
     </div>
     <div id="caixa-erro">
-        <span id="texto-borda">Aviso</span>
+        <div id="barra-titulo-erro">
+            <div id="texto-titulo">Aviso</div>
+        </div>
         <div id="conteudo">
             <div id="icone-erro">
                 <img src="" id="icone" draggable="false">

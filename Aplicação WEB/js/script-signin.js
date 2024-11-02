@@ -32,7 +32,7 @@ function validarSenha() {
     senhaForte ? "green" : "red"
 }
 
-function cadastrar(callback){
+function cadastrar(){
     var nome = inpNome.value
     var usuario = inpUsuario.value
     var confirmarSenha = inpConfirmarSenha.value

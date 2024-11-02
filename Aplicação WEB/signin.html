@@ -9,55 +9,61 @@
     <script src="js/script-signin.js"></script>
 </head>
 <body>
-    <div id="janela">
-        <span id="texto-borda">Novo usuário no Windows</span>
-        <div id="banner">
-            <img src="images/windows-xp-logo-texto-branco.png" draggable="false">
+    <div id="caixa-cadastro">
+        <div id="barra-titulo-cadastro">
+            <div id="texto-titulo">Novo Usuário no Windows</div>
         </div>
-        <div id="campo-cadastro">
-            <div id="nome-senha">
-                <p>Nome:</p>
-                <input type="text" id="inpNome">
-                <p>Senha:</p>
-                <input type="password" id="inpSenha" onkeyup="validarSenha()">
+        <div id="conteudo">
+            <div id="banner">
+                <img src="images/windows-xp-logo-texto-branco.png" draggable="false">
             </div>
-            <div id="usuario-confirmar">
-                <p>Usuário:</p>
-                <input type="text" id="inpUsuario">
-                <p>Confirmar Senha:</p>
-                <input type="password" id="inpConfirmarSenha">
+            <div id="campo-cadastro">
+                <div id="nome-senha">
+                    <p>Nome:</p>
+                    <input type="text" id="inpNome">
+                    <p>Senha:</p>
+                    <input type="password" id="inpSenha" onkeyup="validarSenha()">
+                </div>
+                <div id="usuario-confirmar">
+                    <p>Usuário:</p>
+                    <input type="text" id="inpUsuario">
+                    <p>Confirmar Senha:</p>
+                    <input type="password" id="inpConfirmarSenha">
+                </div>
+                <div id="escolher-avatar">
+                    <img src="images/avatares/sem-avatar.png" id="avatar" draggable="false">
+                    <select id="selAvatar" onchange="alterarAvatar()">
+                        <option value="">Escolha um Avatar</option>
+                        <option value="car">Carrinho</option>
+                        <option value="dog">Cachorro</option>
+                        <option value="fish">Peixe</option>
+                        <option value="duck">Pato</option>
+                        <option value="cat">Gato</option>
+                        <option value="flower">Flor</option>
+                        <option value="guitar">Guitarra</option>
+                        <option value="ball">Bola</option>
+                        <option value="kick">Karate</option>
+                    </select>
+                </div>
             </div>
-            <div id="escolher-avatar">
-                <img src="images/avatares/sem-avatar.png" id="avatar" draggable="false">
-                <select id="selAvatar" onchange="alterarAvatar()">
-                    <option value="">Escolha um Avatar</option>
-                    <option value="car">Carrinho</option>
-                    <option value="dog">Cachorro</option>
-                    <option value="fish">Peixe</option>
-                    <option value="duck">Pato</option>
-                    <option value="cat">Gato</option>
-                    <option value="flower">Flor</option>
-                    <option value="guitar">Guitarra</option>
-                    <option value="ball">Bola</option>
-                    <option value="kick">Karate</option>
-                </select>
+            <div id="recomendar-senha">
+                <b id="validacaoForte">A senha precisa conter:</b>
+                <a id="validacaoMaiuscula">Letra Maiúscula</a>
+                <a id="validacaoMinuscula">Letra Minúscula</a>
+                <a id="validacaoSimbolo">Símbolo (!, @, # ou $)</a>
+                <a id="validacaoNumerico">Caracter Numérico</a>
+                <a id="validacaoTamanho">Mínimo 8 Caracteres</a>
             </div>
-        </div>
-        <div id="recomendar-senha">
-            <b id="validacaoForte">A senha precisa conter:</b>
-            <a id="validacaoMaiuscula">Letra Maiúscula</a>
-            <a id="validacaoMinuscula">Letra Minúscula</a>
-            <a id="validacaoSimbolo">Símbolo (!, @, # ou $)</a>
-            <a id="validacaoNumerico">Caracter Numérico</a>
-            <a id="validacaoTamanho">Mínimo 8 Caracteres</a>
-        </div>
-        <div id="botoes">
-            <button id="btnCadastrar" onclick="cadastrar()">Cadastrar</button>
-            <button id="btnVoltar" onclick="paraLogin()">Voltar</button>
+            <div id="botoes">
+                <button id="btnCadastrar" onclick="cadastrar()">Cadastrar</button>
+                <button id="btnVoltar" onclick="paraLogin()">Voltar</button>
+            </div>
         </div>
     </div>
     <div id="caixa-erro">
-        <span id="texto-borda">Aviso</span>
+        <div id="barra-titulo-erro">
+            <div id="texto-titulo">Aviso</div>
+        </div>
         <div id="conteudo">
             <div id="icone-erro">
                 <img src="" id="icone" draggable="false">

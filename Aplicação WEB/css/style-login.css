@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Pixelated MS Sans Serif';
+    src: url("../fonts/Pixelated\ MS\ Sans\ Serif.ttf");
+}
+
 body {
     background-color: #2c4f8c;
     display: flex;
@@ -5,39 +10,60 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    margin: 0px;
+    margin: 0px;    
+    background: url("../images/wallpaper-xp.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     user-select: none;
     font-family: 'Tahoma';
 }
 
-#janela {
+#caixa-login {
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 700px;
+    width: 702px;
     height: 470px;
-    border-top: 40px solid #014ac8;
-    border-left: 4px solid #014ac8;
-    border-bottom: 4px solid #014ac8;
-    border-right: 4px solid #014ac8;
+    background-color: #EEEEEE;
+    box-shadow: inset -2px -2px #00138c, inset 1px 1px #0831d9, inset -3px -3px #001ea0, inset 3px 3px #166aee, inset -5px -5px #003bda, inset 5px 5px #0855dd;
+}
+
+#caixa-login #conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 692px;
+}
+
+#caixa-login #barra-titulo-login {
+    position: absolute;
+    top: -38px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #0997ff, #0053ee 8%, #0050ee 40%, #06f 88%, #06f 93%, #005bff 95%, #003dd7 96%, #003dd7);
+    border-top: 1px solid #0831d9;
+    border-left: 1px solid #0831d9;
+    border-right: 1px solid #001ea0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background-color: #EEEEEE;
-    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.4);
+    height: 40px;
+    width: 702px;
+
+    #texto-titulo {
+        padding-left: 5px;
+        color: #FFFFFF; 
+        font-size: 24px;
+        pointer-events: none;
+        text-shadow: 2px 2px #0f1089;
+    }
 }
 
-#janela #texto-borda {
-    position: absolute;
-    top: -33px;
-    left: 5px;
-    color: #FFFFFF; 
-    font-size: 24px;
-    pointer-events: none;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-}
-
-#janela #banner {
+#caixa-login #banner {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +80,7 @@ body {
     }
 }
 
-#janela #campo-entrar {
+#caixa-login #campo-entrar {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -83,7 +109,7 @@ body {
     }
 }
 
-#janela #campo-entrar #nome-senha {
+#caixa-login #campo-entrar #nome-senha {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -102,10 +128,14 @@ body {
             height: 25px;
             margin: 0px;
         }
+
+        #inpVisualizarEsconder:hover {
+            box-shadow: inset -2px 2px 2px #FC0, inset 2px -2px 2px #FA0;
+        }
     }
 }
 
-#janela #botoes {
+#caixa-login #botoes {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,12 +144,31 @@ body {
     height: 70px;
 
     button {
-        width: 150px;
+        -webkit-font-smoothing: antialiased;
+        font-size: 16px;
+        box-sizing: border-box;
+        border: 1px solid #003c74;
+        background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+        box-shadow: none;
+        border-radius: 3px;
+        width: 120px;
         height: 30px;
-        font-size: 14px;
-        background-color: white;
-        border: 2px solid #4b7ed7;
-        border-radius: 5px;
+    }
+
+    button:hover {
+        box-shadow: inset -2px 2px 2px #FC0, inset 2px -2px 2px #FA0;
+    }
+
+    button:not(:disabled).active, button:not(:disabled):active {
+        box-shadow: none;
+        background: linear-gradient(180deg, #cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
+
+    button.focused, button:focus {
+        box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
+        outline: 1px dotted #000;
+        outline-offset: -4px;
     }
 
     ::first-letter {
@@ -133,24 +182,33 @@ body {
     flex-direction: column;
     width: 400px;
     height: 200px;
-    border-top: 40px solid #014ac8;
-    border-left: 4px solid #014ac8;
-    border-bottom: 4px solid #014ac8;
-    border-right: 4px solid #014ac8;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     background-color: #EEEEEE;
-    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.4);
+    box-shadow: inset -2px -2px #00138c, inset 1px 1px #0831d9, inset -3px -3px #001ea0, inset 3px 3px #166aee, inset -5px -5px #003bda, inset 5px 5px #0855dd;
 }
 
-#caixa-erro #texto-borda {
+#caixa-erro #barra-titulo-erro {
     position: absolute;
-    top: -33px;
-    left: 5px;
-    color: #FFFFFF; 
-    font-size: 24px;
-    pointer-events: none;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    top: -36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #0997ff, #0053ee 8%, #0050ee 40%, #06f 88%, #06f 93%, #005bff 95%, #003dd7 96%, #003dd7);
+    border-top: 1px solid #0831d9;
+    border-left: 1px solid #0831d9;
+    border-right: 1px solid #001ea0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 40px;
+    width: 398px;
+
+    #texto-titulo {
+        padding-left: 5px;
+        color: #FFFFFF; 
+        font-size: 24px;
+        pointer-events: none;
+        text-shadow: 2px 2px #0f1089;
+    }
 }
 
 #caixa-erro #conteudo {
@@ -162,12 +220,31 @@ body {
     height: 100%;
 
     button {
-        width: 150px;
+        -webkit-font-smoothing: antialiased;
+        font-size: 16px;
+        box-sizing: border-box;
+        border: 1px solid #003c74;
+        background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+        box-shadow: none;
+        border-radius: 3px;
+        width: 120px;
         height: 30px;
-        font-size: 14px;
-        background-color: white;
-        border: 2px solid #4b7ed7;
-        border-radius: 5px;
+    }
+
+    button:hover {
+        box-shadow: inset -2px 2px 2px #FC0, inset 2px -2px 2px #FA0;
+    }
+
+    button:not(:disabled).active, button:not(:disabled):active {
+        box-shadow: none;
+        background: linear-gradient(180deg, #cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+        box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    }
+
+    button.focused, button:focus {
+        box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
+        outline: 1px dotted #000;
+        outline-offset: -4px;
     }
 }
 
