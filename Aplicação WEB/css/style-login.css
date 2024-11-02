@@ -24,10 +24,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 702px;
-    height: 470px;
+    width: 700px;
+    height: 510px;
     background-color: #EEEEEE;
-    box-shadow: inset -2px -2px #00138c, inset 1px 1px #0831d9, inset -3px -3px #001ea0, inset 3px 3px #166aee, inset -5px -5px #003bda, inset 5px 5px #0855dd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: inset -2px -2px #00138c, inset 1px 1px #0831d9, inset -3px -3px #001ea0, inset 3px 3px #166aee, inset -5px -5px #003bda, inset 5px 5px #0855dd, 0px 0px 10px 1px rgba(0,0,0,0.5);
 }
 
 #caixa-login #conteudo {
@@ -35,12 +38,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 692px;
+    width: 690px;
+    padding-top: 40px;
 }
 
 #caixa-login #barra-titulo-login {
     position: absolute;
-    top: -38px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,8 +54,9 @@ body {
     border-right: 1px solid #001ea0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    box-sizing: border-box;
     height: 40px;
-    width: 702px;
+    width: 700px;
 
     #texto-titulo {
         padding-left: 5px;
@@ -121,17 +125,67 @@ body {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 150px;
-        
-        #inpVisualizarEsconder {
-            width: 25px;
-            height: 25px;
-            margin: 0px;
+
+        input[type=checkbox] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            margin: 0;
+            background: 0;
+            position: fixed;
+            opacity: 0;
+            border: none;
         }
 
-        #inpVisualizarEsconder:hover {
+        input[type="checkbox" i] {
+            background-color: initial;
+            cursor: default;
+            appearance: auto;
+            box-sizing: border-box;
+            margin: 3px 3px 3px 4px;
+            padding: initial;
+            border: initial;
+        }
+
+        input[type=checkbox]+label:before {
+            content: "";
+            left: -19px;
+            display: flex;
+            flex-direction: row;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            box-shadow: none;
+            border: 1px solid #1d5281;
+            background: linear-gradient(135deg, #dcdcd7, #fff);
+            margin-right: 6px;
+        }
+
+        input[type=checkbox]+label {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 150px;
+            line-height: 20px;
+            position: relative;
+        }
+
+        input[type=checkbox]:checked+label:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: url("../images/checked.png");
+            background-position: center;
+            background-size: cover;
+            left: 1px;
+            top: 1px;
+        }
+
+        input[type=checkbox]:hover+label:before {
             box-shadow: inset -2px 2px 2px #FC0, inset 2px -2px 2px #FA0;
         }
+            
     }
 }
 
@@ -181,14 +235,16 @@ body {
     display: none;
     flex-direction: column;
     width: 400px;
-    height: 200px;
+    height: 240px;
     background-color: #EEEEEE;
-    box-shadow: inset -2px -2px #00138c, inset 1px 1px #0831d9, inset -3px -3px #001ea0, inset 3px 3px #166aee, inset -5px -5px #003bda, inset 5px 5px #0855dd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: inset -2px -2px #00138c, inset 1px 1px #0831d9, inset -3px -3px #001ea0, inset 3px 3px #166aee, inset -5px -5px #003bda, inset 5px 5px #0855dd, 0px 0px 10px 1px rgba(0,0,0,0.5);
 }
 
 #caixa-erro #barra-titulo-erro {
     position: absolute;
-    top: -36px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -199,8 +255,9 @@ body {
     border-right: 1px solid #001ea0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    box-sizing: border-box;
     height: 40px;
-    width: 398px;
+    width: 400px;
 
     #texto-titulo {
         padding-left: 5px;
@@ -212,10 +269,13 @@ body {
 }
 
 #caixa-erro #conteudo {
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     width: 100%;
     height: 100%;
 

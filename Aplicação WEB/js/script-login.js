@@ -17,11 +17,9 @@ function entrar(){
 }
 
 function mostrarEsconder(){
-    if (textoCheckbox.innerHTML == "Visualizar Senha"){
-        textoCheckbox.innerHTML = "Esconder Senha"
+    if (inpSenha.type == "password"){
         inpSenha.type = "text"
     } else {
-        textoCheckbox.innerHTML = "Visualizar Senha"
         inpSenha.type = "password"
     }
 }
