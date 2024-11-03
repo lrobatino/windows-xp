@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Trabalho</title>
+    <link rel="icon" href="images/windows-xp-icon.png">
+    <link rel="stylesheet" href="css/style-desktop.css">
+    <script src="js/script-desktop.js"></script>
+</head>
+<body>
+    <div id="area-trabalho">
+        <div id="caixa-erro">
+            <div id="barra-titulo-erro">
+                <div id="erro-titulo">Bem-vindo ao Windows XP!</div>
+            </div>
+            <div id="conteudo">
+                <div id="icone-erro">
+                    <img src="images/icones/Speech.png" id="icone" draggable="false">
+                    <a id="erro">Login realizado com sucesso.</a>
+                    <audio id="aviso" src="sounds/Windows XP Exclamation.mp3" preload="auto"></audio>
+                    <audio id="informativo" src="sounds/Windows XP Balloon.mp3" preload="auto"></audio>
+                    <audio id="entrar" src="sounds/Windows XP Startup.mp3"></audio>
+                </div>
+                <div id="botoes">
+                    <button id="btnAviso" onclick="fecharAvisoInicial()">Ok</button>
+                    <button id="btnFecharAviso" onclick="fecharAviso()" hidden>Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div id="cabecalho">
+
+        </div>
+        <div id="conteudo">
+
+        </div>
+        <div id="rodape">
+            <div id="sair" onclick="sair()">
+                <img src="images/icones/Logout.png" draggable="false">
+                <a>Sair</a>
+            </div>
+        </div>
+    </div>
+    <div id="barra-tarefa">
+        <div id="iniciar" onclick="abrirMenu()">
+            <img src="images/windows-xp-icon-sombra.png" draggable="false">
+            <b>menu</b>
+        </div>
+        <div id="indicador-sistema">
+            <a id="data-hora"></a>
+        </div>
+    </div>
+</body>
+</html>

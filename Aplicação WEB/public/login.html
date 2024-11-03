@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="css/style-login.css">
+    <link rel="icon" href="images/windows-xp-icon.png">
+    <script src="js/script-login.js"></script>
+    <script src="js/sessao.js"></script>
+</head>
+<body>
+    <div id="caixa-login">
+        <div id="barra-titulo-login">
+            <div id="texto-titulo">Entrar no Windows</div>
+        </div>
+        <div id="conteudo">
+            <div id="banner">
+                <img src="images/windows-xp-logo-texto-branco.png" draggable="false">
+            </div>
+            <div id="campo-entrar">
+                <div id="nome-senha">
+                    <a>Usuário:</a>
+                    <input type="text" id="inpUsuario" maxlength="20" onkeyup="validarAvatar()">
+                    <a>Senha:</a>
+                    <input type="password" id="inpSenha" maxlength="20">
+                    <div id="visualizar-esconder">
+                        <input type="checkbox" id="inpVisualizarEsconder" onchange="mostrarEsconder()">
+                        <label for="inpVisualizarEsconder" id="textoCheckbox">Visualizar Senha</label>
+                    </div>
+                </div>
+                <img src="images/avatares/sem-avatar.jpg" id="avatar" draggable="false">
+            </div>
+            <div id="botoes">
+                <button id="btnEntrar" onclick="entrar()">Entrar</button>
+                <button id="btnNovoUsuario" onclick="window.location.href='signin.html'">Novo Usuário</button>
+            </div>
+        </div>
+    </div>
+    <div id="caixa-erro">
+        <div id="barra-titulo-erro">
+            <div id="erro-titulo">Aviso</div>
+        </div>
+        <div id="conteudo">
+            <div id="icone-erro">
+                <img src="" id="icone" draggable="false">
+                <a id="erro"></a>
+                <audio id="aviso" src="sounds/Windows XP Exclamation.mp3" preload="auto"></audio>
+                <audio id="informativo" src="sounds/Windows XP Balloon.mp3" preload="auto"></audio>
+            </div>
+            <button onclick="fecharAviso()">Ok</button>
+        </div>
+    </div>
+</body>
+</html>
