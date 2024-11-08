@@ -21,7 +21,8 @@ atualizarRelogio()
 
 function abrirMenu(){
     iniciar.style = "background-color: #19581f !important; box-shadow: inset -4px -4px 4px #61b868, inset 4px 4px 4px #0e3011 !important;"
-
+    document.getElementById('avatar').src = `images/avatares/${sessionStorage.AVATAR}.jpg` 
+    document.getElementById('usuario').innerHTML = sessionStorage.NOME_USUARIO  
     menu.style.display = "flex"
 
     iniciar.onclick = fecharMenu
