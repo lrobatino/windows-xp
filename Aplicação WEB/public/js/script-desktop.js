@@ -64,3 +64,11 @@ function desconectar(){
     sessionStorage.clear()
     window.location.href = 'login.html'
 }
+
+function abrirCampoMinado(){
+    document.getElementById('janela-campo-minado').style.display = 'flex'
+}
+
+function fecharCampoMinado(){
+    document.getElementById('janela-campo-minado').style.display = 'none'
+}

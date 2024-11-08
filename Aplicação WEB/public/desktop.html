@@ -29,7 +29,7 @@
             </div>
         </div>
         <div id="aplicativos">
-            <div class="icone" tabindex="-1">
+            <div class="icone" tabindex="-1" ondblclick="abrirCampoMinado()">
                 <img src="images/icones/Minesweeper.png" draggable="false">
                 <span><p>Campo Minado</p></span>
             </div>
@@ -39,6 +39,16 @@
             </div>
         </div>
         <div id="janela-campo-minado">
+            <div id="barra-titulo">
+                <div id="titulo">
+                    <img src="images/icones/Minesweeper.png" draggable="false">
+                    <a>Campo Minado</a>
+                </div>
+                <div id="controles">
+                    <img src="images/icones/Minimize.png" draggable="false">
+                    <img src="images/icones/Exit.png" draggable="false" onclick="fecharCampoMinado()">
+                </div>
+            </div>
             <div id="conteudo">
 
             </div>
