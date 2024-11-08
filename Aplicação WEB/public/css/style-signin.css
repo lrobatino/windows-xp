@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Tahoma';
+    src: url('../fonts/tahoma.ttf');
+}
+
 body {
     background-color: #2c4f8c;
     display: flex;

@@ -50,7 +50,7 @@ function fecharAviso(){
 
 function sair(){
     informativo.play()
-    document.getElementById('erro-titulo').innerHTML = 'Logout do Windows'
+    document.getElementById('erro-titulo').innerHTML = 'Sair do Windows'
     document.getElementById('caixa-erro').style.display = 'flex'
     document.getElementById('btnAviso').innerHTML = 'Sim'
     document.getElementById('btnAviso').onclick = desconectar
