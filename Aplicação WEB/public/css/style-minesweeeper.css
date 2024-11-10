@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'Retro';
+    src: url('../fonts/Retro\ Gaming.ttf');
+}
+
+#janela-campo-minado {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 800px;
+    height: 600px;
+    background-color: #DDDDDD;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: inset -2px -2px #00138c, inset 1px 1px #0831d9, inset -3px -3px #001ea0, inset 3px 3px #166aee, inset -5px -5px #003bda, inset 5px 5px #0855dd, 0px 0px 10px 1px rgba(0,0,0,0.5);
+}
+
+#janela-campo-minado #conteudo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+#janela-campo-minado #conteudo #menu-principal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'Retro';
+    background-color: #CCCCCC;
+    width: 790px;
+    height: 555px;
+    box-sizing: border-box;
+    box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
+
+    #titulo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 26px;
+        width: 750px;
+        color: #FF0000;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+    }
+
+    #opcoes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 210px;
+        width: 410px;
+        font-size: 26px;
+        box-sizing: border-box;
+        box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
+        color: #555555;
+    }
+
+    #opcoes span:hover {
+        color: #FF0000;
+    }
+
+    #opcoes span:hover::before {
+        content: "";
+        display: inline-block;
+        background-image: url('../images/campo-minado/flag.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 26px;
+        height: 26px;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+    
+    #opcoes span:hover::after {
+        content: "";
+        display: inline-block;
+        background-image: url('../images/campo-minado/flag.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 26px;
+        height: 26px;
+        margin-left: 8px;
+        vertical-align: middle;
+    }
+    
+
+    #opcoes span:active {
+        color: #BB0000;
+    }
+}
+
+#janela-campo-minado #barra-titulo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #0997ff, #0053ee 8%, #0050ee 40%, #06f 88%, #06f 93%, #005bff 95%, #003dd7 96%, #003dd7);
+    border-top: 1px solid #0831d9;
+    border-left: 1px solid #0831d9;
+    border-right: 1px solid #001ea0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 800px;
+
+    #titulo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        color: #FFFFFF;
+        width: 190px;
+        font-size: 24px;
+        pointer-events: none;
+        text-shadow: 2px 2px #0f1089;
+
+        img {
+            padding-left: 5px;
+            padding-right: 5px;
+            height: 20px;
+            width: 20px;
+        }
+    }
+
+    #controles {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 70px;
+        img {
+            padding-right: 5px;
+            height: 30px;
+            width: 30px;
+            transition: filter 0.1s ease;
+        }
+
+        img:hover {
+            filter: brightness(1.2);
+        }
+
+        img:active {
+            filter: brightness(0.9)
+        }
+    }
+
+}
+
+#janela-campo-minado #conteudo #jogo {
+    position: relative;
+    display: none;
+}
+
+#opcoes-jogo {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 200px;
+    height: 100%;
+
+    #emote #face {
+        padding: 10px;
+        width: 100px;
+        height: 100px;
+        background-color: #CCCCCC;
+        box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
+    }
+
+    p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Retro';
+        font-size: 22px;
+        color: #555555;
+        width: 170px;
+        height: 50px;
+        background-color: #CCCCCC;
+        box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
+    }
+
+    p:active {
+        background-color: #999999;
+        box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+    }
+}
+
+#janela-campo-minado #conteudo #jogo {
+    box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+}
