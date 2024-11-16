@@ -80,17 +80,17 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 20px;
     gap: 5px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    width: 150px;
+    width: 170px;
     height: 100%;
     background-color: #30a53a;
     box-shadow: inset -6px -6px 6px #19581f, inset 6px 6px 4px #61b868;
     transition: 0ms;
 
     img {
+        padding-left: 20px;
         width: 31px;
         height: 29px;
     }
@@ -100,6 +100,42 @@ body {
         font-style: italic;
         text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
         color: #eeeeee;
+    }
+}
+
+#tarefas {
+    padding-left: 5px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 1600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .aplicacao {
+        margin-right: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 3px;
+        background-color: #336fd8;
+        box-shadow: inset -1px -1px 1px 1px #5987d6, inset 1px 1px 1px 1px #5987d6;
+        width: 250px;
+        height: 40px;
+
+        img {
+            padding-left: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        a {
+            padding-left: 10px;
+            color: white;
+            font-size: 18px;
+        }
     }
 }
 

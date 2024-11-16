@@ -65,11 +65,74 @@ function desconectar(){
     window.location.href = 'login.html'
 }
 
+var tarefa = ''
+var campoMinadoAberto = false
+
 function abrirCampoMinado(){
+    if (campoMinadoAberto){
+        return erro()
+    }
+    tarefa = 'Campo Minado'
+    criarTarefa()
     document.getElementById('janela-campo-minado').style.display = 'flex'
+    campoMinadoAberto = true
 }
 
 function fecharCampoMinado(){
+    tarefa = 'Campo Minado'
+    apagarTarefa()
     voltar()
     document.getElementById('janela-campo-minado').style.display = 'none'
+    campoMinadoAberto = false
+}
+
+function minimizarCampoMinado(){
+    document.getElementById('janela-campo-minado').style.display = 'none'
+}
+
+function erro(){
+    aviso.play()
+    document.getElementById('caixa-erro').style.display = 'flex'
+    document.getElementById('erro-titulo').innerHTML = 'Erro'
+    document.getElementById('erro').innerHTML = `Você não pode abrir o mesmo aplicativo duas vezes.`
+    document.getElementById('icone').src = "images/icones/Critical.png"
+    document.getElementById('btnAviso').innerHTML = 'Ok'
+    document.getElementById('btnAviso').onclick = fecharAviso
+    document.getElementById('btnFecharAviso').hidden = true
+}
+
+function criarTarefa(){
+    if (tarefa == 'Campo Minado'){
+        const janela = document.getElementById('janela-campo-minado')
+        const novaTarefa = document.createElement('div')
+        novaTarefa.className = 'aplicacao'
+        novaTarefa.id = 'minesweeper'
+        novaTarefa.onclick = () => {
+            janela.style.display = 'flex'
+        }
+    
+        const tarefaIcon = document.createElement('img')
+        tarefaIcon.src = 'images/icones/Minesweeper.png'
+    
+        novaTarefa.appendChild(tarefaIcon)
+    
+        const tarefaTitulo = document.createElement('a')
+        tarefaTitulo.textContent = 'Campo Minado'
+    
+        novaTarefa.appendChild(tarefaTitulo)
+    
+        const tarefas = document.getElementById('tarefas')
+        tarefas.appendChild(novaTarefa)
+    } else {
+
+    }
+}
+
+function apagarTarefa() {
+    var div
+
+    if (tarefa == 'Campo Minado') {
+        div = document.getElementById('minesweeper')
+        div.remove()
+    }
 }
