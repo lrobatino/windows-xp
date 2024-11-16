@@ -25,6 +25,7 @@ function jogar() {
 }
 
 function voltar() {
+    reiniciar()
     document.getElementById('menu-principal').style.display = 'flex'
     document.getElementById('jogo').style.display = 'none'
     document.getElementById('opcoes-jogo').style.display = 'none'    
@@ -40,6 +41,46 @@ const nTilesX = 10;
 const nTilesY = 10;
 var nBombs = 10;
 let gameOverFlag = false;
+let gameStarted = false;
+let timer = 0;
+let timerInterval;
+let score = 0;
+let elapsedSeconds = 0;
+
+function startTimer() {
+    if (!gameStarted) {
+        gameStarted = true;
+        timerInterval = setInterval(() => {
+            if (timer < 999) {
+                elapsedSeconds++;
+                timer++;
+                updateTimerDisplay();
+            }
+        }, 1000);
+    }
+}
+
+function updateTimerDisplay() {
+    const digit1 = document.getElementById('digit1');
+    const digit2 = document.getElementById('digit2');
+    const digit3 = document.getElementById('digit3');
+
+    const timerString = String(timer).padStart(3, '0');
+
+    digit1.src = `images/campo-minado/t${timerString[0]}.png`;
+    digit2.src = `images/campo-minado/t${timerString[1]}.png`;
+    digit3.src = `images/campo-minado/t${timerString[2]}.png`;
+}
+
+function updateScoreDisplay() {
+    const hundreds = Math.floor(score / 100);
+    const tens = Math.floor((score % 100) / 10);
+    const units = score % 10;
+
+    document.getElementById("sDigit1").src = `images/campo-minado/t${hundreds}.png`;
+    document.getElementById("sDigit2").src = `images/campo-minado/t${tens}.png`;
+    document.getElementById("sDigit3").src = `images/campo-minado/t${units}.png`;
+}
 
 class Tile {
     constructor(i, j) {
@@ -50,7 +91,7 @@ class Tile {
         this.isMarked = false;
         this.bombsAround = 0;
         this.openedAround = false;
-        this.isFlaggedWrong = false; // Adicionado para rastrear marcação errada de bandeira
+        this.isFlaggedWrong = false;
     }
 }
 
@@ -95,7 +136,6 @@ function getTile(i, j) {
 
 generateTiles();
 
-// Imagens para tiles
 const tileImage = new Image();
 tileImage.src = 'images/campo-minado/tile.png';
 
@@ -111,7 +151,6 @@ noBombImage.src = 'images/campo-minado/noBomb.png';
 const bombImage = new Image();
 bombImage.src = 'images/campo-minado/bomb.png';
 
-// Carregar imagens para os números de 1 a 8
 const tileUm = new Image();
 tileUm.src = 'images/campo-minado/1.png';
 
@@ -136,7 +175,6 @@ tileSete.src = 'images/campo-minado/7.png';
 const tileOito = new Image();
 tileOito.src = 'images/campo-minado/8.png';
 
-// Função que desenha os tiles quando todas as imagens estiverem carregadas
 Promise.all([
     new Promise(resolve => tileImage.onload = resolve),
     new Promise(resolve => tileOpenImage.onload = resolve),
@@ -152,11 +190,11 @@ Promise.all([
     new Promise(resolve => noBombImage.onload = resolve),
     new Promise(resolve => flagImage.onload = resolve)
 ]).then(() => {
-    draw(); // Chama a função de desenho após as imagens serem carregadas
+    draw();
 });
 
-const borda = 5;  // Tamanho da borda
-const tileSize = 50;  // Tamanho dos tiles (50x50px)
+const borda = 5;
+const tileSize = 50;
 
 function draw() {
     ctx.clearRect(0, 0, 500, 500);
@@ -166,41 +204,35 @@ function draw() {
 }
 
 function drawTile(tile) {
-    // Desloca os tiles para dentro do canvas, respeitando a borda de 5px
-    let x = (tile.i * tileSize) + borda;  // Calcula a posição X, levando em conta a borda
-    let y = (tile.j * tileSize) + borda;  // Calcula a posição Y, levando em conta a borda
+    let x = (tile.i * tileSize) + borda;
+    let y = (tile.j * tileSize) + borda;
 
-    // Se o tile estiver aberto
     if (tile.isOpen) {
         ctx.drawImage(tileOpenImage, x, y, tileSize, tileSize);
-        
-        // Se for uma bomba
+
         if (tile.isBomb) {
             if (tile.isMarked && !tile.isFlaggedWrong) {
-                // Marca a bomba com fundo vermelho se for marcada corretamente
                 ctx.fillStyle = "#ff0000";
                 ctx.fillRect(x, y, tileSize, tileSize);
             }
-            ctx.drawImage(bombImage, x + 10, y + 10, 30, 30);  // Desenha a bomba
+            ctx.drawImage(bombImage, x + 10, y + 10, 30, 30);
         } else if (tile.bombsAround) {
-            drawNumber(tile);  // Desenha o número de bombas ao redor
+            drawNumber(tile);
         }
     } else {
-        // Se o tile não estiver aberto
-        ctx.drawImage(tileImage, x, y, tileSize, tileSize);  // Desenha o tile fechado
+        ctx.drawImage(tileImage, x, y, tileSize, tileSize);
         if (tile.isMarked) {
-            ctx.drawImage(flagImage, x + 10, y + 10, 30, 30);  // Desenha a bandeira
+            ctx.drawImage(flagImage, x + 10, y + 10, 30, 30);
         }
         if (tile.isFlaggedWrong) {
-            // Marca a bandeira errada com a imagem 'noBomb'
             ctx.drawImage(noBombImage, x + 10, y + 10, 30, 30);
         }
     }
 }
 
 function drawNumber(tile) {
-    let x = (tile.i * tileSize) + borda;  // Ajuste com a borda
-    let y = (tile.j * tileSize) + borda;  // Ajuste com a borda
+    let x = (tile.i * tileSize) + borda;
+    let y = (tile.j * tileSize) + borda;
     switch (tile.bombsAround) {
         case 1: ctx.drawImage(tileUm, x + 10, y + 10, 30, 30); break;
         case 2: ctx.drawImage(tileDois, x + 10, y + 10, 30, 30); break;
@@ -214,11 +246,18 @@ function drawNumber(tile) {
 }
 
 function openTile(tile) {
-    // Impede que o tile com bandeira seja aberto
-    if (tile.isMarked) return;  // Não abre o tile se ele tiver uma bandeira
-
-    tile.isOpen = true;
+    if (gameOverFlag) return;
+    if (!gameStarted) startTimer();
+    if (tile.isMarked) return;
+    if (!tile.isOpen && !tile.isBomb) {
+        tile.isOpen = true;
+        score += 2;
+        updateScoreDisplay();
+    }
     if (!tile.openedAround && tile.bombsAround == 0) openAround(tile);
+    if (tiles.filter(t => t.isOpen).length === (nTilesX * nTilesY - nBombs)) {
+        gameWon();
+    }
 }
 
 function openAround(tile) {
@@ -235,57 +274,78 @@ function openAround(tile) {
     }
 }
 
+function gameWon() {
+    calculateFinalScore();
+    gameOverFlag = true;
+    clearInterval(timerInterval);
+    document.getElementById('face').src = 'images/campo-minado/surprise-face.png';
+}
+
 function gameOver(clickedTile) {
-    gameOverFlag = true;  // Marca o jogo como perdido
+    clearInterval(timerInterval);
+    gameOverFlag = true;
 
     document.getElementById('face').src = 'images/campo-minado/dead-face.png';
 
-    // Revela todas as bombas
     tiles.forEach(tile => {
         if (tile.isBomb) {
-            tile.isOpen = true;  // Revela as bombas
-            ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Limpa o fundo do tile
-            ctx.drawImage(tileOpenImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Desenha o fundo do tile aberto
-            ctx.drawImage(bombImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);  // Desenha a bomba
+            tile.isOpen = true;
+            ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+            ctx.drawImage(tileOpenImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+            ctx.drawImage(bombImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);
         }
     });
 
-    // Agora, marca a bomba clicada com fundo vermelho
     clickedTile.isOpen = true;
-    ctx.fillStyle = "#ff0000";  // Cor de fundo vermelho
-    ctx.fillRect((clickedTile.i * tileSize) + borda, (clickedTile.j * tileSize) + borda, tileSize, tileSize);  // Fundo vermelho
-    ctx.drawImage(bombImage, (clickedTile.i * tileSize) + 10 + borda, (clickedTile.j * tileSize) + 10 + borda, 30, 30);  // Desenha a bomba
+    ctx.fillStyle = "#ff0000";
+    ctx.fillRect((clickedTile.i * tileSize) + borda, (clickedTile.j * tileSize) + borda, tileSize, tileSize);
+    ctx.drawImage(bombImage, (clickedTile.i * tileSize) + 10 + borda, (clickedTile.j * tileSize) + 10 + borda, 30, 30);
 
-    // Revele as bandeiras erradas (se houver alguma)
     tiles.forEach(tile => {
         if (tile.isMarked) {
             if (tile.isBomb) {
-                // Se a bandeira foi colocada corretamente (onde há uma bomba), apenas desenha a bandeira
-                ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Limpa o fundo do tile
-                ctx.drawImage(tileOpenImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Desenha o fundo do tile aberto
-                ctx.drawImage(flagImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);  // Desenha a bandeira sobre o tile
+                ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+                ctx.drawImage(tileOpenImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+                ctx.drawImage(flagImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);
             } else {
-                // Se a bandeira foi colocada onde não há bomba, substitui pela imagem "noBomb.png"
-                ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Limpa o fundo do tile
-                ctx.drawImage(tileOpenImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Desenha o fundo do tile aberto
-                ctx.drawImage(noBombImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);  // Desenha a imagem de "noBomb"
+                ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+                ctx.drawImage(tileOpenImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+                ctx.drawImage(noBombImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);
             }
         }
     });
 
-    // Adiciona a bandeira no tile correto se o jogo terminou
     tiles.forEach(tile => {
         if (tile.isMarked && tile.isBomb) {
-            // Desenha o tile.png por trás da flag.png
-            ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Limpa o fundo do tile
-            ctx.drawImage(tileImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);  // Desenha o fundo tile.png
-            ctx.drawImage(flagImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);  // Desenha a bandeira sobre o tile
+            ctx.clearRect((tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+            ctx.drawImage(tileImage, (tile.i * tileSize) + borda, (tile.j * tileSize) + borda, tileSize, tileSize);
+            ctx.drawImage(flagImage, (tile.i * tileSize) + 10 + borda, (tile.j * tileSize) + 10 + borda, 30, 30);
         }
     });
 }
 
+function calculateFinalScore() {
+    tiles.forEach(tile => {
+        if (tile.isMarked && tile.isBomb) {
+            score += 5;
+        }
+    });
+
+    if (elapsedSeconds <= 30) {
+        score += 300;
+    } else if (elapsedSeconds <= 60) {
+        score += 150;
+    } else if (elapsedSeconds <= 120) {
+        score += 75;
+    }
+
+    updateScoreDisplay();
+
+    finalScore = score;
+}
+
 function isGameOver() {
-    return gameOverFlag;  // Retorna o estado do jogo
+    return gameOverFlag;
 }
 
 generateBombs();
@@ -293,23 +353,25 @@ generateNBombs();
 draw();
 
 function reiniciar() {
-    // Reinicia as variáveis do jogo
     tiles = [];
     gameOverFlag = false;
-    document.getElementById('face').src = 'images/campo-minado/happy-face.png';  // Muda o rosto de volta ao normal
+    gameStarted = false;
+    timer = 0;
+    score = 0;
+    clearInterval(timerInterval);
+    updateTimerDisplay();
+    updateScoreDisplay();
+    document.getElementById('face').src = 'images/campo-minado/happy-face.png';
 
-    // Gera os tiles e bombas novamente
     generateTiles();
     generateBombs();
     generateNBombs();
 
-    // Redesenha o jogo
     draw();
 }
 
-
 telaJogo.addEventListener("click", e => {
-    if (isGameOver()) return;  // Se o jogo terminou, não faz nada
+    if (isGameOver()) return;
 
     const rect = telaJogo.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -320,9 +382,8 @@ telaJogo.addEventListener("click", e => {
 
     const clickedTile = getTile(i, j);
 
-    if (!clickedTile.isOpen && !clickedTile.isMarked) {  // Adicionado !clickedTile.isMarked
+    if (!clickedTile.isOpen && !clickedTile.isMarked) {
         if (clickedTile.isBomb) {
-            // Chama a função gameOver se a bomba for clicada
             gameOver(clickedTile);
         } else {
             openTile(clickedTile);
@@ -331,10 +392,9 @@ telaJogo.addEventListener("click", e => {
     }
 });
 
-// Evento de clique com o botão direito
 telaJogo.addEventListener("contextmenu", e => {
     e.preventDefault();
-    if (isGameOver()) return;  // Se o jogo terminou, não faz nada
+    if (isGameOver()) return;
 
     const rect = telaJogo.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -350,7 +410,3 @@ telaJogo.addEventListener("contextmenu", e => {
         draw();
     }
 });
-
-
-
-

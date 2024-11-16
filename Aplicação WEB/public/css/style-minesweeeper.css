@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 800px;
+    width: 1000px;
     height: 600px;
     background-color: #DDDDDD;
     border-top-left-radius: 10px;
@@ -35,11 +35,9 @@
     align-items: center;
     justify-content: space-evenly;
     font-family: 'Retro';
-    background-color: #CCCCCC;
-    width: 790px;
+    width: 1000px;
     height: 555px;
     box-sizing: border-box;
-    box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
 
     #titulo {
         display: flex;
@@ -118,7 +116,7 @@
     border-top-right-radius: 10px;
     box-sizing: border-box;
     height: 40px;
-    width: 800px;
+    width: 1000px;
 
     #titulo {
         display: flex;
@@ -173,7 +171,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    width: 200px;
+    width: 400px;
     height: 100%;
 
     #emote #face {
@@ -200,6 +198,27 @@
     p:active {
         background-color: #999999;
         box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+    }
+}
+
+#pontuacao-timer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .contador {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 100px;
+
+        img {
+            width: 50px;
+            height: 100px;
+        }
     }
 }
 

@@ -70,5 +70,6 @@ function abrirCampoMinado(){
 }
 
 function fecharCampoMinado(){
+    voltar()
     document.getElementById('janela-campo-minado').style.display = 'none'
 }
