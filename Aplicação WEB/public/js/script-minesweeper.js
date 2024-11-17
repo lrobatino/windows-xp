@@ -24,9 +24,16 @@ function jogar() {
     document.getElementById('opcoes-jogo').style.display = 'flex'
 }
 
+function placarLideres() {
+    buscarPontuacao()
+    document.getElementById('menu-principal').style.display = 'none'
+    document.getElementById('placar-lideres').style.display = 'flex'
+}
+
 function voltar() {
     reiniciar()
     document.getElementById('menu-principal').style.display = 'flex'
+    document.getElementById('placar-lideres').style.display = 'none'
     document.getElementById('jogo').style.display = 'none'
     document.getElementById('opcoes-jogo').style.display = 'none'    
 }
@@ -324,7 +331,10 @@ function gameOver(clickedTile) {
     });
 }
 
+let pontuacaoGravada = false;
+
 function calculateFinalScore() {
+    if (pontuacaoGravada) return;
     tiles.forEach(tile => {
         if (tile.isMarked && tile.isBomb) {
             score += 5;
@@ -341,7 +351,72 @@ function calculateFinalScore() {
 
     updateScoreDisplay();
 
-    finalScore = score;
+    pontuacao = score;
+    tempo = timer;
+
+    gravarPontuacao(pontuacao, tempo)
+    pontuacaoGravada = true;
+}
+
+function gravarPontuacao(pontuacao, tempo) {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var usuario = sessionStorage.USUARIO;
+
+    if (!idUsuario || !usuario) {
+        console.error('Usuário não autenticado ou informações ausentes no sessionStorage.');
+        return;
+    }
+
+    fetch('/score/gravarPontuacao', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            usuario, 
+            pontuacao: Number(pontuacao),
+            tempo, 
+            fkUsuario: idUsuario 
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Pontuação gravada com sucesso:', data);
+    })
+    .catch(err => {
+        console.error('Erro ao gravar pontuação:', err);
+    });
+}
+
+function buscarPontuacao() {
+    fetch('/score/buscarPontuacao', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Pontuações recebidas:', data);
+
+        const top = document.getElementById('top-5');
+        top.innerHTML = '';
+
+        data.forEach((pontuacao, index) => {
+            const p = document.createElement('p');
+            p.textContent = `${index + 1}. ${pontuacao.usuario} - ${pontuacao.pontuacao}pts - ${pontuacao.tempo}s`.toUpperCase();
+            top.appendChild(p);
+        });
+    })
+    .catch(err => {
+        console.error('Erro ao buscar pontuações:', err);
+    });
 }
 
 function isGameOver() {
@@ -358,6 +433,7 @@ function reiniciar() {
     gameStarted = false;
     timer = 0;
     score = 0;
+    pontuacaoGravada = false;
     clearInterval(timerInterval);
     updateTimerDisplay();
     updateScoreDisplay();

@@ -59,24 +59,31 @@
                     </div>
                     <div id="opcoes">
                         <span onclick="jogar()">JOGAR</span>
-                        <span>PLACAR DE LÍDERES</span>
+                        <span onclick="placarLideres()">PLACAR DE LÍDERES</span>
                     </div>
+                </div>
+                <div id="placar-lideres">
+                    <span>TOP 5 PONTUAÇÕES</span>
+                    <p>USUÁRIO - PONTOS - TEMPO</p>
+                    <div id="top-5">
+                    </div>
+                    <a onclick="voltar()">VOLTAR</a>
                 </div>
                 <div id="opcoes-jogo">
                     <div id="pontuacao-timer">
                         <div class="contador" id="pontuacao">
-                            <img id="digit1" src="images/campo-minado/t0.png">
-                            <img id="digit2" src="images/campo-minado/t0.png">
-                            <img id="digit3" src="images/campo-minado/t0.png">
+                            <img id="digit1" src="images/campo-minado/t0.png" draggable="false">
+                            <img id="digit2" src="images/campo-minado/t0.png" draggable="false">
+                            <img id="digit3" src="images/campo-minado/t0.png" draggable="false">
                         </div>
                         <div class="contador" id="timer">
-                            <img id="sDigit1" src="images/campo-minado/t0.png">
-                            <img id="sDigit2" src="images/campo-minado/t0.png">
-                            <img id="sDigit3" src="images/campo-minado/t0.png">
+                            <img id="sDigit1" src="images/campo-minado/t0.png" draggable="false">
+                            <img id="sDigit2" src="images/campo-minado/t0.png" draggable="false">
+                            <img id="sDigit3" src="images/campo-minado/t0.png" draggable="false">
                         </div>
                     </div>
                     <div id="emote">
-                        <img id="face" src="images/campo-minado/happy-face.png">
+                        <img id="face" src="images/campo-minado/happy-face.png" draggable="false">
                     </div>
                     <p onclick="reiniciar()">REINICIAR</p>
                     <p onclick="voltar()">VOLTAR</p>

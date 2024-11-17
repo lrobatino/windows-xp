@@ -61,11 +61,22 @@
         align-items: center;
         justify-content: space-evenly;
         height: 210px;
-        width: 410px;
+        width: 500px;
         font-size: 26px;
         box-sizing: border-box;
-        box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
+        background-color: #CCCCCC;
+        box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
         color: #555555;
+    }
+
+    #opcoes span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 400px;
+        height: 60px;
+        background-color: #DDDDDD;
+        box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
     }
 
     #opcoes span:hover {
@@ -99,6 +110,8 @@
 
     #opcoes span:active {
         color: #BB0000;
+        background-color: #999999;
+        box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
     }
 }
 
@@ -167,18 +180,21 @@
 }
 
 #opcoes-jogo {
+    box-sizing: border-box;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     width: 400px;
-    height: 100%;
+    height: 511px;
+    box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+    background-color: #CCCCCC;
 
     #emote #face {
         padding: 10px;
         width: 100px;
         height: 100px;
-        background-color: #CCCCCC;
+        background-color: #DDDDDD;
         box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
     }
 
@@ -191,7 +207,7 @@
         color: #555555;
         width: 170px;
         height: 50px;
-        background-color: #CCCCCC;
+        background-color: #DDDDDD;
         box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
     }
 
@@ -224,4 +240,36 @@
 
 #janela-campo-minado #conteudo #jogo {
     box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+}
+
+#placar-lideres {
+    height: 511px;
+    width: 511px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 20px;
+    font-family: 'Retro';
+    color: #555555;
+    background-color: #CCCCCC;
+    box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 50px;
+        color: #555555;
+        font-family: 'Retro';
+        background-color: #DDDDDD;
+        box-shadow: inset -5px -5px #777777, inset 5px 5px #FFFFFF;
+        
+    }
+
+    a:active {
+        background-color: #999999;
+        box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+    }
 }

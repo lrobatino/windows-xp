@@ -9,6 +9,7 @@ var path = require("path");
 
 const routes = require('./src/routes/index');
 var usuarioRouter = require("./src/routes/usuarios");
+var scoreRouter = require("./src/routes/score");
 
 var PORTA_APP = process.env.APP_PORT || 3000;
 var HOST_APP = process.env.APP_HOST || 'localhost';
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use("/usuarios", usuarioRouter);
+app.use("/score", scoreRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

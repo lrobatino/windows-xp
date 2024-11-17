@@ -113,6 +113,7 @@ function criarTarefa(){
     
         const tarefaIcon = document.createElement('img')
         tarefaIcon.src = 'images/icones/Minesweeper.png'
+        tarefaIcon.draggable = false
     
         novaTarefa.appendChild(tarefaIcon)
     

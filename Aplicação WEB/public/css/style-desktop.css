@@ -124,6 +124,7 @@ body {
         box-shadow: inset -1px -1px 1px 1px #5987d6, inset 1px 1px 1px 1px #5987d6;
         width: 250px;
         height: 40px;
+        transition: 0.2s ease;
 
         img {
             padding-left: 10px;
@@ -136,6 +137,14 @@ body {
             color: white;
             font-size: 18px;
         }
+    }
+
+    .aplicacao:hover {
+        filter: brightness(1.2);
+    }
+
+    .aplicacao:active {
+        filter: brightness(0.8);
     }
 }
 
