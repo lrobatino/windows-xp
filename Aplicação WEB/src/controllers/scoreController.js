@@ -17,6 +17,40 @@ function buscarPontuacao(req, res) {
         });
 }
 
+function buscarMenorTempo(req, res) {
+    console.log("ACESSEI O SCORE CONTROLLER \n\n function buscarMenorTempo()");
+
+    scoreModel.buscarMenorTempo()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(function (erro) {
+            console.log("Houve um erro ao buscar o menor tempo: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function buscarMaioresVencedores(req, res) {
+    console.log("ACESSEI O SCORE CONTROLLER \n\n function buscarMaioresVencedores()");
+
+    scoreModel.buscarMaioresVencedores()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(function (erro) {
+            console.log("Houve um erro ao buscar os maiores vencedores: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 function gravarPontuacao(req, res) {
     var usuario = req.body.usuario;
     var pontuacao = req.body.pontuacao;
@@ -45,5 +79,7 @@ function gravarPontuacao(req, res) {
 
 module.exports = {
     buscarPontuacao,
+    buscarMenorTempo,
+    buscarMaioresVencedores,
     gravarPontuacao
 };

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style-desktop.css">
     <link rel="stylesheet" href="css/style-minesweeeper.css">
     <script src="js/script-desktop.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="area-trabalho">
@@ -63,11 +64,23 @@
                     </div>
                 </div>
                 <div id="placar-lideres">
-                    <span>TOP 5 PONTUAÇÕES</span>
-                    <p>USUÁRIO - PONTOS - TEMPO</p>
-                    <div id="top-5">
+                    <div id="ranking">
+                        <span>TOP 5 PONTUAÇÕES</span>
+                        <p>USUÁRIO - PONTOS - TEMPO</p>
+                        <div id="top-5">
+                        </div>
+                        <a onclick="voltar()">VOLTAR</a>
                     </div>
-                    <a onclick="voltar()">VOLTAR</a>
+                    <div id="grafico-kpi">
+                        <div id="grafico">
+                            <canvas id="maiores-vencedores"></canvas>
+                        </div>
+                        <div id="kpi">
+                            <span>MENOR TEMPO ATUAL</span>
+                            <a id="usuario-melhor-tempo">lrobatino</a>
+                            <p id="melhor-tempo">13s</p>
+                        </div>
+                    </div>
                 </div>
                 <div id="opcoes-jogo">
                     <div id="pontuacao-timer">
@@ -120,4 +133,124 @@
     </div>
 </body>
 </html>
+
 <script src="js/script-minesweeper.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+<script>
+
+    const maiorVencedor = [];
+    const qtdVitorias = [];
+
+    function buscarMaioresVencedores() {
+    fetch('/score/buscarMaioresVencedores', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Maiores vencedores recebidos:', data);
+
+            maiorVencedor.length = 0;
+            qtdVitorias.length = 0;
+
+            data.forEach(item => {
+                const index = maiorVencedor.indexOf(item.usuario);
+
+                if (index !== -1) {
+                    qtdVitorias[index] = item.qtdVitorias;
+                } else {
+                    maiorVencedor.push(item.usuario);
+                    qtdVitorias.push(item.qtdVitorias);
+                }
+            });
+
+            criarGrafico();
+        })
+        .catch(err => {
+            console.error('Erro ao buscar maiores vencedores:', err);
+        });
+    }
+
+
+    let graficoGerado = null;
+
+    function criarGrafico() {
+        Chart.register(ChartDataLabels);
+
+        const ctxGrafico = document.getElementById('maiores-vencedores').getContext('2d');
+
+        if (graficoGerado) {
+        graficoGerado.destroy();
+        }
+
+        graficoGerado = new Chart(ctxGrafico, {
+            type: 'bar',
+            data: {
+                labels: maiorVencedor,
+                datasets: [{
+                    data: qtdVitorias,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'rgb(255, 55, 55)',
+                        'rgb(255, 255, 55)',
+                        'rgb(55, 255, 55)',
+                        'rgb(55, 55, 255)',
+                        'rgb(255, 55, 255)',
+                    ],
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 16,
+                                family: 'Retro'
+                            },
+                            color: '#555555'
+                        },
+                        grid: {
+                            display: false,
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            display: false,
+                        },
+                        grid: {
+                            display: false,
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'MAIORES VENCEDORES',
+                        font: {
+                            size: 32,
+                            family: 'Retro',
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    datalabels: {
+                        font: {
+                            size: 32,
+                            family: 'Retro'
+                        },
+                        color: '#555555'
+                    }
+                }
+            }
+        });
+    }
+
+</script>

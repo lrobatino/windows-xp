@@ -9,8 +9,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 1000px;
-    height: 600px;
+    width: 1200px;
+    height: 650px;
     background-color: #DDDDDD;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -35,8 +35,8 @@
     align-items: center;
     justify-content: space-evenly;
     font-family: 'Retro';
-    width: 1000px;
-    height: 555px;
+    width: 1200px;
+    height: 600px;
     box-sizing: border-box;
 
     #titulo {
@@ -129,7 +129,7 @@
     border-top-right-radius: 10px;
     box-sizing: border-box;
     height: 40px;
-    width: 1000px;
+    width: 1200px;
 
     #titulo {
         display: flex;
@@ -243,17 +243,33 @@
 }
 
 #placar-lideres {
-    height: 511px;
-    width: 511px;
+    height: 100%;
+    width: 100%;
     display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#placar-lideres #ranking {
+    height: 550px;
+    width: 500px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    font-size: 20px;
+    font-size: 24px;
     font-family: 'Retro';
     color: #555555;
     background-color: #CCCCCC;
     box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+
+    span {
+        font-family: 'Retro';
+        font-size: 32px;
+        font-weight: bold;
+        color: #555555;
+    }
 
     a {
         display: flex;
@@ -271,5 +287,56 @@
     a:active {
         background-color: #999999;
         box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+    }
+}
+
+#placar-lideres #grafico-kpi {
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#placar-lideres #grafico {
+    padding: 10px;
+    height: 260px;
+    width: 520px;
+    font-size: 22px;
+    font-family: 'Retro';
+    color: #555555;
+    background-color: #CCCCCC;
+    box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+}
+
+#placar-lideres #kpi {
+    height: 250px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #CCCCCC;
+    box-shadow: inset -5px -5px #FFFFFF, inset 5px 5px #777777;
+
+    span {
+        font-family: 'Retro';
+        font-size: 32px;
+        font-weight: bold;
+        color: #555555;
+    }
+
+    a {
+        font-family: 'Retro';
+        font-size: 24px;
+        color: red;
+    }
+
+    p {
+        margin: 0px;
+        color: red;
+        font-family: 'Retro';
+        font-size: 48px;
+        font-weight: bold;
     }
 }

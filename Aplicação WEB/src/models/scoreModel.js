@@ -15,6 +15,35 @@ function buscarPontuacao() {
     console.log("Executando a seguinte instrução SQL: ", instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function buscarMenorTempo() {
+    const instrucaoSql = `
+        SELECT
+            usuario,
+            tempo
+        FROM pontuacao
+        ORDER BY tempo
+        LIMIT 1;
+    `;
+
+    console.log("Executando a seguinte instrução SQL: ", instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMaioresVencedores() {
+    const instrucaoSql = `
+        SELECT
+            usuario,
+            COUNT(*) AS qtdVitorias
+        FROM pontuacao
+        GROUP BY usuario
+        LIMIT 5;
+    `;
+
+    console.log("Executando a seguinte instrução SQL: ", instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function gravarPontuacao(usuario, pontuacao, tempo, fkUsuario) {
     console.log("ACESSEI O SCORE MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function gravarPontuacao():", usuario, pontuacao, tempo, fkUsuario);
     
@@ -27,5 +56,7 @@ function gravarPontuacao(usuario, pontuacao, tempo, fkUsuario) {
 
 module.exports = {
     buscarPontuacao,
+    buscarMenorTempo,
+    buscarMaioresVencedores,
     gravarPontuacao
 };

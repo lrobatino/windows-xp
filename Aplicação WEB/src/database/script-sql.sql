@@ -24,3 +24,5 @@ SELECT * FROM usuario;
 SELECT * FROM pontuacao;
 
 TRUNCATE pontuacao;
+
+TRUNCATE usuario;

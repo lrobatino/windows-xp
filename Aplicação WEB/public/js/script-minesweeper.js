@@ -26,6 +26,8 @@ function jogar() {
 
 function placarLideres() {
     buscarPontuacao()
+    buscarMenorTempo()
+    buscarMaioresVencedores()
     document.getElementById('menu-principal').style.display = 'none'
     document.getElementById('placar-lideres').style.display = 'flex'
 }
@@ -341,12 +343,14 @@ function calculateFinalScore() {
         }
     });
 
-    if (elapsedSeconds <= 30) {
+    if (elapsedSeconds <= 20) {
+        score += 500;
+    } else if (elapsedSeconds <= 30) {
         score += 300;
     } else if (elapsedSeconds <= 60) {
-        score += 150;
+        score += 200;
     } else if (elapsedSeconds <= 120) {
-        score += 75;
+        score += 100;
     }
 
     updateScoreDisplay();
@@ -373,7 +377,7 @@ function gravarPontuacao(pontuacao, tempo) {
         body: JSON.stringify({ 
             usuario, 
             pontuacao: Number(pontuacao),
-            tempo, 
+            tempo,
             fkUsuario: idUsuario 
         })
     })
@@ -410,12 +414,40 @@ function buscarPontuacao() {
 
         data.forEach((pontuacao, index) => {
             const p = document.createElement('p');
-            p.textContent = `${index + 1}. ${pontuacao.usuario} - ${pontuacao.pontuacao}pts - ${pontuacao.tempo}s`.toUpperCase();
+            p.textContent = `${index + 1}. ${pontuacao.usuario}`.toUpperCase() + ` - ${pontuacao.pontuacao} PTS - ${pontuacao.tempo}s`;
             top.appendChild(p);
         });
     })
     .catch(err => {
         console.error('Erro ao buscar pontuações:', err);
+    });
+}
+
+function buscarMenorTempo() {
+    fetch('/score/buscarMenorTempo', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Menor tempo recebido:', data);
+
+        const usuarioMelhorTempo = document.getElementById('usuario-melhor-tempo');
+        const melhorTempo = document.getElementById('melhor-tempo');
+
+        usuarioMelhorTempo.innerHTML = "";
+        melhorTempo.innerHTML = "";
+
+        usuarioMelhorTempo.textContent = `${data[0].usuario}`.toUpperCase();
+        melhorTempo.textContent = `${data[0].tempo}s`;
+    })
+    .catch(err => {
+        console.error('Erro ao buscar menor tempo:', err);
     });
 }
 
