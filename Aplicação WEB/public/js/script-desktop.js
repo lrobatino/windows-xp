@@ -67,6 +67,7 @@ function desconectar(){
 
 var tarefa = ''
 var campoMinadoAberto = false
+var internetExplorerAberto = false
 
 function abrirCampoMinado(){
     if (campoMinadoAberto){
@@ -90,8 +91,30 @@ function minimizarCampoMinado(){
     document.getElementById('janela-campo-minado').style.display = 'none'
 }
 
+function abrirInternetExplorer(){
+    if (internetExplorerAberto){
+        return erro()
+    }
+    tarefa = 'Internet Explorer'
+    criarTarefa()
+    document.getElementById('janela-internet-explorer').style.display = 'flex'
+    internetExplorerAberto = true
+}
+
+function fecharInternetExplorer(){
+    tarefa = 'Internet Explorer'
+    apagarTarefa()
+    voltar()
+    document.getElementById('janela-internet-explorer').style.display = 'none'
+    internetExplorerAberto = false
+}
+
+function minimizarInternetExplorer(){
+    document.getElementById('janela-internet-explorer').style.display = 'none'
+}
+
 function erro(){
-    aviso.play()
+    critico.play()
     document.getElementById('caixa-erro').style.display = 'flex'
     document.getElementById('erro-titulo').innerHTML = 'Erro'
     document.getElementById('erro').innerHTML = `Você não pode abrir o mesmo aplicativo duas vezes.`
@@ -124,8 +147,28 @@ function criarTarefa(){
     
         const tarefas = document.getElementById('tarefas')
         tarefas.appendChild(novaTarefa)
-    } else {
-
+    } else if (tarefa == 'Internet Explorer') {
+        const janela = document.getElementById('janela-internet-explorer')
+        const novaTarefa = document.createElement('div')
+        novaTarefa.className = 'aplicacao'
+        novaTarefa.id = 'internet'
+        novaTarefa.onclick = () => {
+            janela.style.display = 'flex'
+        }
+    
+        const tarefaIcon = document.createElement('img')
+        tarefaIcon.src = 'images/icones/Internet Explorer 6.png'
+        tarefaIcon.draggable = false
+    
+        novaTarefa.appendChild(tarefaIcon)
+    
+        const tarefaTitulo = document.createElement('a')
+        tarefaTitulo.textContent = 'Internet Explorer'
+    
+        novaTarefa.appendChild(tarefaTitulo)
+    
+        const tarefas = document.getElementById('tarefas')
+        tarefas.appendChild(novaTarefa)
     }
 }
 
@@ -135,5 +178,7 @@ function apagarTarefa() {
     if (tarefa == 'Campo Minado') {
         div = document.getElementById('minesweeper')
         div.remove()
-    }
+    } else if (tarefa == 'Internet Explorer')
+        div = document.getElementById('internet')
+        div.remove()
 }

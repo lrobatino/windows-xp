@@ -7,7 +7,9 @@
     <link rel="icon" href="images/windows-xp-icon.png">
     <link rel="stylesheet" href="css/style-desktop.css">
     <link rel="stylesheet" href="css/style-minesweeeper.css">
+    <link rel="stylesheet" href="css/style-internet-explorer.css">
     <script src="js/script-desktop.js"></script>
+    <script src="js/script-internet-explorer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -21,6 +23,7 @@
                     <img src="images/icones/Speech.png" id="icone" draggable="false">
                     <a id="erro">Login realizado com sucesso.</a>
                     <audio id="aviso" src="sounds/Windows XP Exclamation.mp3" preload="auto"></audio>
+                    <audio id="critico" src="sounds/Windows XP Critical Stop.mp3" preload="auto"></audio>
                     <audio id="informativo" src="sounds/Windows XP Balloon.mp3" preload="auto"></audio>
                     <audio id="entrar" src="sounds/Windows XP Startup.mp3"></audio>
                 </div>
@@ -35,9 +38,32 @@
                 <img src="images/icones/Minesweeper.png" draggable="false">
                 <span><p>Campo Minado</p></span>
             </div>
-            <div class="icone" tabindex="-1">
+            <div class="icone" tabindex="-1" ondblclick="abrirInternetExplorer()">
                 <img src="images/icones/Internet Explorer 6.png" draggable="false">
                 <p>Internet Explorer</p>
+            </div>
+        </div>
+        <div id="janela-internet-explorer">
+            <div id="barra-titulo">
+                <div id="titulo">
+                    <img src="images/icones/Internet Explorer 6.png" draggable="false">
+                    <a>Internet Explorer</a>
+                </div>
+                <div id="controles">
+                    <img id="minimizar" src="images/icones/Minimize.png" draggable="false" onclick="minimizarInternetExplorer()">
+                    <img id="fechar" src="images/icones/Exit.png" draggable="false" onclick="fecharInternetExplorer()">
+                </div>
+            </div>
+            <div id="conteudo">
+                <div id="barra-navegacao">
+                </div>
+                <div id="barra-endereco">
+                    <span>Adress</span>
+                    <select id="selSite">
+                        <option value="blog">http://curiosidadeswindowsxp.blogspot.com.br/</option>
+                        <option value="orkut">http://orkut.com/</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div id="janela-campo-minado">
@@ -77,8 +103,8 @@
                         </div>
                         <div id="kpi">
                             <span>MENOR TEMPO ATUAL</span>
-                            <a id="usuario-melhor-tempo">lrobatino</a>
-                            <p id="melhor-tempo">13s</p>
+                            <a id="usuario-melhor-tempo"></a>
+                            <p id="melhor-tempo"></p>
                         </div>
                     </div>
                 </div>

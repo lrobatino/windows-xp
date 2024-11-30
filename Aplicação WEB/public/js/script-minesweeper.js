@@ -54,14 +54,12 @@ let gameStarted = false;
 let timer = 0;
 let timerInterval;
 let score = 0;
-let elapsedSeconds = 0;
 
 function startTimer() {
     if (!gameStarted) {
         gameStarted = true;
         timerInterval = setInterval(() => {
             if (timer < 999) {
-                elapsedSeconds++;
                 timer++;
                 updateTimerDisplay();
             }
@@ -287,7 +285,7 @@ function gameWon() {
     calculateFinalScore();
     gameOverFlag = true;
     clearInterval(timerInterval);
-    document.getElementById('face').src = 'images/campo-minado/surprise-face.png';
+    document.getElementById('face').src = 'images/campo-minado/glasses-face.png';
 }
 
 function gameOver(clickedTile) {
@@ -337,30 +335,36 @@ let pontuacaoGravada = false;
 
 function calculateFinalScore() {
     if (pontuacaoGravada) return;
+
+    console.log("Inicializando cálculo de pontuação final");
+    console.log("Pontuação inicial:", score);
+
     tiles.forEach(tile => {
         if (tile.isMarked && tile.isBomb) {
             score += 5;
         }
     });
 
-    if (elapsedSeconds <= 20) {
-        score += 500;
-    } else if (elapsedSeconds <= 30) {
-        score += 300;
-    } else if (elapsedSeconds <= 60) {
-        score += 200;
-    } else if (elapsedSeconds <= 120) {
-        score += 100;
-    }
+    console.log("Pontuação após marcar bandeiras corretas:", score);
+
+    const maxTimeScore = 1000;
+    const timerPenalty = 0.05;
+
+    score += Math.round(maxTimeScore * Math.exp(-timerPenalty * timer));
+
+    console.log("Pontuação final considerando tempo:", score);
 
     updateScoreDisplay();
 
     pontuacao = score;
     tempo = timer;
 
-    gravarPontuacao(pontuacao, tempo)
+    gravarPontuacao(pontuacao, tempo);
     pontuacaoGravada = true;
+
+    console.log("Pontuação gravada com sucesso!");
 }
+
 
 function gravarPontuacao(pontuacao, tempo) {
     var idUsuario = sessionStorage.ID_USUARIO;
