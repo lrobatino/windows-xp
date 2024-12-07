@@ -18,9 +18,3 @@ tempo INT,
 fkUsuario INT,
 CONSTRAINT fkPontuacaoUsuario FOREIGN KEY (fkUsuario)
 	REFERENCES usuario(idUsuario));
-
-SELECT * FROM usuario;
-
-SELECT * FROM pontuacao;
-
-TRUNCATE pontuacao;
