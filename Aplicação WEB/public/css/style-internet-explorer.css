@@ -29,6 +29,7 @@
     border-right: 1px solid #001ea0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    box-sizing: border-box;
     height: 40px;
     width: 1196px;
 
@@ -77,7 +78,7 @@
 
 #janela-internet-explorer #conteudo {
     width: 100%;
-    height: 768px;
+    height: 764px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,7 +118,7 @@
     overflow: auto;
     width: 99.1%;
     height: 83.2%;
-    display: flex;
+    display: none;
     align-items: flex-start;
     justify-content: center;
     background: url('../images/wallpaper-blog.jpg');
@@ -138,9 +139,227 @@
         width: 900px;
         height: auto;
 
+        b {
+            font-size: 26px;
+        }
+
+        span {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
         img {
             width: 800px;
             height: 400px;
+        }
+    }
+}
+
+#conteudo-orkut {
+    overflow: auto;
+    width: 99.1%;
+    height: 83.2%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: #ccdfff;
+
+    #navbar {
+        width: 100%;
+        height: 25px;
+        color: white;
+        background-color: #84b0fa;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+
+    #opcoes-orkut {
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+
+        span {
+            padding: 7px;
+            color: white;
+            border-radius: 3px;
+            background-color: #84b0fa;
+        }
+
+    }
+
+    #inicio {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100px;
+
+        img {
+            width: 180px;
+            height: 42.5px;
+        }
+
+        #buscar {
+            width: 320px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            input {
+                width: 250px;
+            }
+        }
+    }
+
+    #pagina {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+
+        #perfil {
+            height: 640px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            img {
+                width: 220px;
+                height: 220px;
+                border: 1px solid;
+                border-color: #78a3eb;
+            }
+
+            #opcoes {
+                padding-left: 20px;
+                width: 200px;
+                height: 400px;
+                background-color: white;
+                border: 1px solid;
+                border-color: #78a3eb;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-evenly;
+
+                p {
+                    padding: 0px;
+                    margin: 0px;
+                    font-size: 22px;
+                }
+
+                i {
+                    color: gray;
+                }
+            }
+        }
+
+        #feed {
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 20px;
+            width: 585px;
+            height: 600px;
+            background-color: white;
+            border: 1px solid;
+            border-color: #78a3eb;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-evenly;
+            text-align: justify;
+
+            img {
+                width: 576px;
+                height: 324px;
+            }
+
+            b {
+                color: #06f;
+            }
+
+            #foto-nome {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: center;
+
+                b {
+                    padding: 15px;
+                    font-size: 16px;
+                    color: #06f;
+                }
+
+                img {
+                    height: 50px;
+                    width: 50px;
+                }
+            }
+        }
+
+        #amigos {
+            padding: 20px;
+            width: 230px;
+            height: 200px;
+            background-color: white;
+            border: 1px solid;
+            border-color: #78a3eb;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-evenly;
+            text-align: justify;
+
+            #lista {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+
+                .foto-nome {
+                    height: 80px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    text-align: center;
+
+                    p {
+                        padding: 0px;
+                        margin: 0px;
+                    }
+
+                    img {
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+            }
+
+            u {
+                color: #06f;
+            }
         }
     }
 }

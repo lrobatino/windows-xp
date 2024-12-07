@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style-minesweeeper.css">
     <link rel="stylesheet" href="css/style-internet-explorer.css">
     <script src="js/script-desktop.js"></script>
+    <script src="js/script-explorer.js"></script>
     <script src="js/script-internet-explorer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -59,26 +60,91 @@
                 </div>
                 <div id="barra-endereco">
                     <span>Adress</span>
-                    <select id="selSite">
-                        <option value="blog">http://www.curiosidadeswindowsxp.blogspot.com.br/</option>
+                    <select id="selSite" onchange="trocarSite()">
                         <option value="orkut">http://www.orkut.com/</option>
+                        <option value="blog">http://www.curiosidadeswindowsxp.blogspot.com.br/</option>
                     </select>
                 </div>
                 <div id="conteudo-windows">
                     <div id="pagina">
                         <b>Windows XP</b>
                         <p>O Windows XP é um sistema operacional desenvolvido pela Microsoft, lançado em 25 de outubro de 2001. Ele foi amplamente elogiado por sua estabilidade, interface amigável e desempenho aprimorado em comparação com seus antecessores, como o Windows 98 e o Windows Me. O nome "XP" vem de "eXPerience" (experiência), refletindo o foco da Microsoft em proporcionar uma experiência de uso mais integrada e eficiente.</p>
-                        <img src="images/exemplo-windows-xp-blog.png"><br><br>
+                        <img src="images/exemplo-windows-xp-blog.png" draggable="false"><br><br><br>
                         <b>Funcionalidades Inovadoras</b><br>
                         <span>Windows Media Player</span>
                         <p>- O Windows Media Player 9 foi lançado pela Microsoft em janeiro de 2003 como parte do Windows XP e disponível para download em versões anteriores do Windows. Ele trouxe várias melhorias em relação às versões anteriores, focando na experiência do usuário, suporte a novos formatos e personalização.</p>
-                        <img src="images/exemplo-windows-media-player-blog.png"><br><br>
+                        <img src="images/exemplo-windows-media-player-blog.png" draggable="false"><br>
                         <span>Internet Explorer 6</span>
                         <p>- O Microsoft Internet Explorer 6 foi uma das versões mais populares do Internet Explorer, principalmente porque foi totalmente integrado às versões do Microsoft Windows: XP e Server 2003. Foi lançada em 27 de agosto de 2001 e foi o navegador web mais usado durante o seu "reinado" (superando o Internet Explorer 5.x), atingindo um pico de utilização de 80% em períodos dos anos de 2002 e 2003, e em conjunto com outras versões, 95% em 2003. E só decaiu lentamente até 2007, quando ele perdeu cerca de metade da sua fatia de mercado para o Internet Explorer 7 e Mozilla Firefox entre o final de 2006 a 2008.</p>
-                        <img src="images/exemplo-windows-internet-explorer-blog.png"><br><br>
+                        <img src="images/exemplo-windows-internet-explorer-blog.png" draggable="false"><br>
                         <span>Suporte para tema desktop e personalização</span>
                         <p>- O Windows XP foi um dos sistemas operacionais mais populares da Microsoft e trouxe a possibilidade de personalizar sua interface através de temas. Os temas eram pacotes que modificavam a aparência visual do sistema, incluindo ícones, cores, sons e a interface gráfica.</p>
-                        <img src="images/exemplo-windows-personalizacao-blog.jpeg">
+                        <img src="images/exemplo-windows-personalizacao-blog.jpeg" draggable="false"><br><br><br>
+                        <b>Windows XP e os Objetivos de Desenvolvimento Sustentável da ONU</b>
+                        <p>Os Objetivos de Desenvolvimento Sustentável (ODS) são uma agenda global adotada pela ONU em 2015 para promover a paz, a prosperidade e a proteção ambiental até 2030. São 17 objetivos que abrangem desafios sociais, econômicos e ambientais. Embora o Windows XP tenha sido lançado muito antes dos ODS, ele pode ser relacionado a alguns objetivos, especialmente considerando o impacto da tecnologia na sociedade.</p>
+                        <img src="images/exemplo-ods-onu-blog.png" draggable="false"><br>
+                        <span>Objetivo 4: Educação de Qualidade</span>
+                        <p>O Windows XP desempenhou um papel importante na democratização do acesso à tecnologia e educação digital. Ele foi amplamente utilizado em escolas, instituições educacionais e programas de inclusão digital ao redor do mundo, permitindo que muitas pessoas tivessem acesso a ferramentas de aprendizado e informação pela primeira vez.</p>
+                        <span>Objetivo 8: Trabalho Decente e Crescimento Econômico</span>
+                        <p>O Windows XP facilitou a automação e digitalização de processos, aumentando a produtividade em escritórios e empresas. Sua ampla adoção contribuiu para o desenvolvimento de setores econômicos e a criação de empregos relacionados à tecnologia da informação.</p>
+                        <span>Objetivo 9: Indústria, Inovação e Infraestrutura</span>
+                        <p>O Windows XP foi um marco na evolução tecnológica, oferecendo suporte a inovações em software e hardware. Ele possibilitou o crescimento de indústrias que dependiam de tecnologia computacional, desde pequenas empresas até grandes corporações.</p>
+                    </div>
+                </div>
+                <div id="conteudo-orkut">
+                    <div id="navbar">
+                        <span>Você Pesquisa Maps Play YouTube Notícias Gmail Drive Mais</span>
+                        <span>| configurações | sair</span>
+                    </div>
+                    <div id="inicio">
+                        <img src="images/orkut-logo.png" draggable="false">
+                        <div id="opcoes-orkut">
+                            <span>Home</span>
+                            <span>Perfil</span>
+                            <span>Scraps</span>
+                            <span>Comunidades</span>
+                            <span>Aplicativos</span>
+                            <span>Temas</span>
+                        </div>
+                        <div id="buscar">
+                            <input type="text" placeholder="buscar" style=" display: flex; align-items: flex-start;">
+                            <button>buscar</button>
+                        </div>
+                    </div>
+                    <div id="pagina">
+                        <div id="perfil">
+                            <img src="images/pequeno-leandro.jpg" draggable="false">
+                            <div id="opcoes">
+                                <p>Leandro Robatino</p>
+                                <i>Qual é a frase do seu perf...</i>
+                                <span>minhas atualizações</span>
+                                <span>perfil</span>
+                                <span>scraps</span>
+                                <span>fotos</span>
+                                <span>vídeos</span>
+                                <span>depoimentos</span>
+                                <span>aniversários</span>
+                                <span>conversas</span>
+                            </div>
+                        </div>
+                        <div id="feed">
+                            <div id="foto-nome">
+                                <img src="images/pequeno-leandro.jpg" draggable="false">
+                                <b>Leandro Robatino</b>
+                            </div>
+                            <p>Venho por meio desta publicação expressar minha gratidão a algumas pessoas especiais para mim... Agradeço a <b>Alexandre Ferreira</b>, meu falecido Padrinho, por ter sido a pessoa que iniciou minha curiosidade por tecnologia. Sem ele, eu provavelmente não estaria aqui hoje neste ramo, buscando ser um desenvolvedor. Agradeço a <b>Angélica Robatino</b>, minha mãe, por sempre me apoiar e me incentivar a nunca desistir e confiar no processo. Por diversas vezes quando eu me senti angustiado com o futuro, foi ela quem me deu um norte. Agradeço também de forma geral a todas as pessoas, familiares, amigos, professores e mais, que de alguma forma me ajudaram, não só durante meu processo atual de formação, mas ao longo da estrada até aqui.</p>
+                            <img src="images/agradecimento.jpg" draggable="false">
+                        </div>
+                        <div id="amigos">
+                            <p>meus amigos (3)</p>
+                            <div id="lista">
+                                <div class="foto-nome">
+                                    <img src="images/bruno.jpeg">
+                                    <p>Bruno Araújo</p>
+                                </div>
+                            </div>
+                            <u>ver todos</u>
+                        </div>
                     </div>
                 </div>
             </div>
