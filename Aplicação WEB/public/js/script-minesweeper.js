@@ -18,13 +18,19 @@
     }, 1000)
 })()
 
+var tela = 'menu'
+
 function jogar() {
+    tela = 'jogar'
+    alterarTamanhoTela()
     document.getElementById('menu-principal').style.display = 'none'
     document.getElementById('jogo').style.display = 'flex'
     document.getElementById('opcoes-jogo').style.display = 'flex'
 }
 
 function placarLideres() {
+    tela = 'placarLideres'
+    alterarTamanhoTela()
     buscarPontuacao()
     buscarMenorTempo()
     buscarMaioresVencedores()
@@ -32,7 +38,28 @@ function placarLideres() {
     document.getElementById('placar-lideres').style.display = 'flex'
 }
 
+function alterarTamanhoTela() {
+    var janelaCampoMinado = document.getElementById('janela-campo-minado')
+    var barraTituloCampoMinado = document.getElementById('barra-titulo-campo-minado')
+
+    if (tela == 'jogar'){
+        janelaCampoMinado.style.width = '1000px'
+        janelaCampoMinado.style.height = '600px'
+        barraTituloCampoMinado.style.width = '1000px'
+    } else if (tela == 'placarLideres'){
+        janelaCampoMinado.style.width = '1160px'
+        janelaCampoMinado.style.height = '640px'
+        barraTituloCampoMinado.style.width = '1160px'
+    } else {
+        janelaCampoMinado.style.width = '800px'
+        janelaCampoMinado.style.height = '650px'
+        barraTituloCampoMinado.style.width = '800px'
+    }
+}
+
 function voltar() {
+    tela = 'menu'
+    alterarTamanhoTela()
     reiniciar()
     document.getElementById('menu-principal').style.display = 'flex'
     document.getElementById('placar-lideres').style.display = 'none'

@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 1200px;
+    width: 800px;
     height: 650px;
     background-color: #DDDDDD;
     border-top-left-radius: 10px;
@@ -35,7 +35,7 @@
     align-items: center;
     justify-content: space-evenly;
     font-family: 'Retro';
-    width: 1200px;
+    width: 800px;
     height: 600px;
     box-sizing: border-box;
 
@@ -115,7 +115,7 @@
     }
 }
 
-#janela-campo-minado #barra-titulo {
+#janela-campo-minado #barra-titulo-campo-minado {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -129,7 +129,7 @@
     border-top-right-radius: 10px;
     box-sizing: border-box;
     height: 40px;
-    width: 1200px;
+    width: 800px;
 
     #titulo {
         display: flex;
