@@ -60,9 +60,26 @@ function sair(){
     document.getElementById('icone').src = 'images/icones/Authorization Manager.png'
 }
 
-function desconectar(){
-    sessionStorage.clear()
-    window.location.href = 'login.html'
+function desconectar() {
+    aplicarPretoEBranco();
+
+    deslogar.play().then(() => {
+        setTimeout(() => {
+            sessionStorage.clear();
+            window.location.href = 'login.html';
+        }, 2000);
+    }).catch((error) => {
+        console.error("Erro ao tocar o som:", error);
+        setTimeout(() => {
+            sessionStorage.clear();
+            window.location.href = 'login.html';
+        }, 2000);
+    });
+}
+
+function aplicarPretoEBranco() {
+    document.body.style.transition = "filter 1s ease-in-out";
+    document.body.style.filter = "grayscale(100%)";
 }
 
 var tarefa = ''
