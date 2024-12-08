@@ -118,7 +118,7 @@
     overflow: auto;
     width: 99.1%;
     height: 83.2%;
-    display: none;
+    display: flex;
     align-items: flex-start;
     justify-content: center;
     background: url('../images/wallpaper-blog.jpg');
@@ -163,7 +163,7 @@
     overflow: auto;
     width: 99.1%;
     height: 83.2%;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
