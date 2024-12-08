@@ -33,10 +33,11 @@ function buscarMenorTempo() {
 function buscarMaioresVencedores() {
     const instrucaoSql = `
         SELECT
-            usuario,
-            COUNT(*) AS qtdVitorias
+        usuario,
+        COUNT(*) AS qtdVitorias
         FROM pontuacao
         GROUP BY usuario
+        ORDER BY qtdVitorias DESC
         LIMIT 5;
     `;
 
